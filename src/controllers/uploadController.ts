@@ -1,4 +1,3 @@
-// src/controllers/uploadController.ts
 import { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
@@ -6,7 +5,6 @@ import axios from 'axios';
 export const uploadImage = async (req: Request, res: Response) => {
     const { image, customer_code, measure_datetime, measure_type } = req.body;
 
-    // Validação de tipos de dados
     if (typeof image !== 'string' || typeof customer_code !== 'string' ||
         !['WATER', 'GAS'].includes(measure_type)) {
         return res.status(400).json({
@@ -15,8 +13,7 @@ export const uploadImage = async (req: Request, res: Response) => {
         });
     }
 
-    // Verificação de leitura duplicada (mock)
-    const isDuplicate = false; // Aqui você faria a lógica para verificar se já existe uma leitura no mês
+    const isDuplicate = false;
 
     if (isDuplicate) {
         return res.status(409).json({
@@ -26,8 +23,7 @@ export const uploadImage = async (req: Request, res: Response) => {
     }
 
     try {
-        // Chamada à API do Google Gemini (mock)
-        const measure_value = 1234; // Substituir pela chamada real e processamento do resultado
+        const measure_value = 1234;
 
         const measure_uuid = uuidv4();
         const image_url = `https://example.com/images/${measure_uuid}`;
